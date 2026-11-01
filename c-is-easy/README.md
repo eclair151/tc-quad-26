@@ -95,7 +95,9 @@ But, we need recalibrate our payload, because `%hn` read from first byte of our 
 /bin/cat flag.txt;# %4288c%10$hn + p64(x404008)
 ```
 <br>
+
 But, there is other problem, we need make it allignment `0x08`, why? because if we didn't make it, `p64(0x404008)` will mixed with another values, so we need make it allignment.<br>
+<br>
 
 `/bin/cat flag.txt;# %4288c%10$hn` is `32 byte` allign with `0x8`, what a lucn.<br>
 
@@ -108,6 +110,7 @@ So, we know after `r9` we will take from the stack, and was started from 6 and h
 * `8c%10$hn` = `8 byte` -> `index 9`<br>
 * `p64(0x404008)` = `8 byte` -> `index 10`<br>
 <br>
+
 As you can see, our address is at `offset 10` that's why it's `%10$hn`.<br>
 
 #### Payload
